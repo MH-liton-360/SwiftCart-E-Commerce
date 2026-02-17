@@ -1,3 +1,4 @@
+// load categories section..........................................!
 const loadCategory = () => {
     fetch("https://fakestoreapi.com/products/categories")
         .then((res) => res.json())
@@ -32,6 +33,8 @@ const displayCategory = (categories) => {
 
 
 
+
+// load by categories in product section..........................................!
 const loadProductsByCategory = (category) => {
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         .then((res) => res.json())
@@ -46,17 +49,33 @@ const displayLesson = (lessons) => {
 
     // 2. Get into every lessons 
     for (let lesson of lessons) {
+
         // 3.Create Element
-        console.log(lesson);
         const btnDiv = document.createElement("div");
+
+        btnDiv.className = "card bg-gray-100 shadow-sm";
+        btnDiv.style.width = "300px";
+
+
         btnDiv.innerHTML = `
-        <button class="btn btn-outline btn-secondary rounded-2xl">lesson -${lesson.id} </button>
-    
+        <figure>
+                <img src="${lesson.image}" alt="${lesson.title}" class="h-48 w-full object-contain" />
+            </figure>
+            <div class="card-body">
+                <h2 class="card-title">
+                    ${lesson.title.slice(0, 20)}...
+                    <div class="badge badge-secondary">NEW</div>
+                </h2>
+                <p>Price: $${lesson.price}</p>
+                <div class="card-actions justify-end">
+                    <div class="badge badge-outline">${lesson.category}</div>
+                </div>
+            </div>
 
         `
 
         // 4.Append into container 
-        levelContainer.append(btnDiv);
+        levelContainer.appendChild(btnDiv);
     }
 
 }
