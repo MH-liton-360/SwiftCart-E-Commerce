@@ -80,21 +80,39 @@ const displayLesson = (lessons) => {
 
 
         btnDiv.innerHTML = `
-        <figure>
-                <img src="${lesson.image}" alt="${lesson.title}" class="h-48 w-full object-contain" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">
-                    ${lesson.title.slice(0, 20)}...
-                    <div class="badge badge-secondary">NEW</div>
-                </h2>
-                <p>Price: $${lesson.price}</p>
-                <div class="card-actions justify-end">
-                    <div class="badge badge-outline">${lesson.category}</div>
-                </div>
-            </div>
+                    <figure>
+                        <img src="${lesson.image}" alt="${lesson.title}" class="h-48 w-full object-contain" />
+                    </figure>
+                    <div class="card-body">
 
-        `
+                        <!-- Category and rating -->
+                        <div class="card-actions justify-between items-center mb-2">
+                            <div class="badge badge-outline">${lesson.category}</div>
+                            <div class="flex items-center gap-1">
+                                <i class="fa-solid fa-star text-yellow-400"></i>
+                                <span>${lesson.rating.rate}</span>
+                                <span class="text-gray-500 ml-2">(${lesson.rating.count})</span>
+                            </div>
+                        </div>
+
+                        <!-- Title -->
+                        <h2 class="card-title text-lg font-semibold mb-2">
+                            ${lesson.title.slice(0, 20)}...
+                        </h2>
+
+                        <!-- Price -->
+                        <p class="font-semibold text-xl mb-2">$${lesson.price}</p>
+
+                        <!-- Action buttons -->
+                        <div class="card-actions justify-end gap-2">
+                            <div class="btn btn-primary">Details</div>
+                            <button class="btn btn-primary flex items-center gap-1">
+                                <i class="fa-solid fa-cart-arrow-down"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                `
+
 
         // 4.Append into container 
         levelContainer.appendChild(btnDiv);
