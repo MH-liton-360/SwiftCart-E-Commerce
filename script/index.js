@@ -1,3 +1,12 @@
+const loadCategory = () => {
+    fetch("https://fakestoreapi.com/products/categories")
+        .then((res) => res.json())
+        .then((json) => displayLesson(json));
+}
+
+
+
+
 const loadLesson = () => {
     fetch("https://fakestoreapi.com/products")
         .then((res) => res.json())
@@ -26,4 +35,5 @@ const displayLesson = (lessons) => {
     }
 
 }
+loadCategory();
 loadLesson();
