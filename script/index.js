@@ -1,4 +1,4 @@
-// load categories section..........................................!
+// 1. load categories section..........................................!
 const loadCategory = () => {
     fetch("https://fakestoreapi.com/products/categories")
         .then((res) => res.json())
@@ -8,6 +8,21 @@ const loadCategory = () => {
 const displayCategory = (categories) => {
     const categoryContainer = document.getElementById("category-container");
     categoryContainer.innerHTML = "";
+
+    // Adding "All" button manually
+    const allBtn = document.createElement("button");
+    allBtn.innerText = "All";
+    allBtn.style.margin = "10px";
+    allBtn.style.padding = "10px 16px";
+    allBtn.style.border = "1px solid gray";
+    allBtn.style.borderRadius = "8px";
+    allBtn.style.cursor = "pointer";
+    allBtn.style.backgroundColor = "blue";
+    allBtn.style.color = "#fff";
+    allBtn.style.transition = "0.3s";
+    allBtn.onclick = () => loadAllProducts();
+    categoryContainer.append(allBtn);
+
 
     categories.forEach(category => {
         const btn = document.createElement("button");
@@ -32,9 +47,16 @@ const displayCategory = (categories) => {
 }
 
 
+// 2. New function to load all products
+const loadAllProducts = () => {
+    fetch("https://fakestoreapi.com/products")
+        .then(res => res.json())
+        .then(data => displayLesson(data));
+}
 
 
-// load by categories in product section..........................................!
+
+// 3. load by categories in product section..........................................!
 const loadProductsByCategory = (category) => {
     fetch(`https://fakestoreapi.com/products/category/${category}`)
         .then((res) => res.json())
@@ -79,4 +101,5 @@ const displayLesson = (lessons) => {
     }
 
 }
+
 loadCategory();
