@@ -14,7 +14,7 @@
     <div id="product-container"></div>
 
     <script>
-        // 1. Get product ID from URL
+
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get("id");
 
@@ -32,19 +32,16 @@
                         <img src="${product.image}" alt="${product.title}" class="h-64 w-full object-contain rounded-md" />
                     </figure>
                     <div class="card-body">
-                        <!-- Title with NEW badge -->
+                        
                         <h2 class="card-title">
                             ${product.title.slice(0, 30)}...
                             <div class="badge badge-secondary">NEW</div>
                         </h2>
 
-                        <!-- Full Description -->
                         <p class="text-gray-700">${product.description}</p>
 
-                        <!-- Price -->
                         <p class="font-semibold text-lg mt-2">$${product.price}</p>
 
-                        <!-- Category and Rating -->
                         <div class="card-actions justify-between mt-4">
                             <div class="badge badge-outline">${product.category}</div>
                             <div class="flex items-center gap-1">
@@ -54,7 +51,6 @@
                             </div>
                         </div>
 
-                        <!-- Action Buttons -->
                         <div class="card-actions justify-end mt-4 gap-2">
                             <button class="btn btn-primary flex items-center gap-2">
                                 <i class="fa-solid fa-cart-arrow-down"></i> Add to Cart

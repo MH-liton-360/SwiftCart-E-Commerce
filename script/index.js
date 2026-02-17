@@ -2,7 +2,10 @@
 const loadCategory = () => {
     fetch("https://fakestoreapi.com/products/categories")
         .then((res) => res.json())
-        .then((data) => displayCategory(data));
+        .then((data) => {
+            displayCategory(data);
+            loadAllProducts();
+        });
 }
 
 const displayCategory = (categories) => {
@@ -85,7 +88,6 @@ const displayLesson = (lessons) => {
                 </figure>
                 <div class="card-body">
 
-                    <!-- Category and rating -->
                     <div class="card-actions justify-between items-center mb-2">
                         <div class="badge badge-outline">${lesson.category}</div>
                         <div class="flex items-center gap-1">
@@ -95,15 +97,12 @@ const displayLesson = (lessons) => {
                         </div>
                     </div>
 
-                    <!-- Title -->
                     <h2 class="card-title text-lg font-semibold mb-2">
                         ${lesson.title.slice(0, 20)}...
                     </h2>
 
-                    <!-- Price -->
                     <p class="font-semibold text-xl mb-2">$${lesson.price}</p>
 
-                    <!-- Action buttons -->
                     <div class="card-actions justify-end gap-2">
                         <div class="btn btn-primary" onclick="goToDetails(${lesson.id})">Details</div>
                         <button class="btn btn-primary flex items-center gap-1">
